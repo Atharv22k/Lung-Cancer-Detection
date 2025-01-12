@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: {{ 'lightgreen' if prediction == 'Negative' else 'lightcoral' }};
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: {{ 'green' if prediction == 'Negative' else 'red' }};
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ 'Negative Lung Cancer Screening' if prediction == 'Negative' else 'Positive Lung Cancer Screening' }}</h1>
+        <p>Your lung cancer screening result is: <strong>{{ prediction }}</strong></p>
+        <p>
+            {% if prediction == 'Negative' %}
+            Based on the assessment, no immediate signs of lung cancer were detected. However, regular check-ups are recommended.
+            {% else %}
+            The screening indicates potential lung cancer risks. Please consult a healthcare professional for further evaluation and guidance.
+            {% endif %}
+        </p>
+        <a href="/">Go Back to Form</a>
+    </div>
+</body>
+</html>
